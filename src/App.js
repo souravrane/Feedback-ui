@@ -1,5 +1,13 @@
+import React from "react";
+import Header from "./component/Header";
+
 function App() {
-    return <h1>Hello from teh app component</h1>;
+    return (
+        <>
+            <Header />
+            <h1>My app</h1>
+        </>
+    );
 }
 
 export default App;
