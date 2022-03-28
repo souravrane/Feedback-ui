@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function RatingSelect({ select }) {
-    const [selected, setSelected] = useState(5);
+    const [selected, setSelected] = useState(10);
 
     const handleChange = (e) => {
         // +string is a unary operator to convert a string to a number
