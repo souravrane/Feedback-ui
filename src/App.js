@@ -3,6 +3,7 @@ import Header from "./component/Header";
 import FeedbackList from "./component/FeedbackList";
 import FeedbackData from "./data/FeedbackData";
 import FeedbackStats from "./component/FeedbackStats";
+import FeedbackForm from "./component/FeedbackForm";
 
 function App() {
     const [feedback, setFeedback] = useState(FeedbackData);
@@ -17,6 +18,7 @@ function App() {
         <>
             <Header />
             <div className="container">
+                <FeedbackForm />
                 <FeedbackStats feedback={feedback} />
                 <FeedbackList
                     feedback={feedback}
