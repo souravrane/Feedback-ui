@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "../shared/Card";
 import pkg from "../../../package.json";
 
@@ -12,6 +13,7 @@ function AboutPage() {
                     service.
                 </p>
                 <p>Version : {pkg.version}</p>
+                <Link to="/">Back to home</Link>
             </div>
         </Card>
     );
