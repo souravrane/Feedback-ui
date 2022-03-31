@@ -2,14 +2,22 @@ import React, { useState, useContext, useEffect } from "react";
 import FeedbackContext from "../context/FeedbackContext";
 
 function RatingSelect({ select }) {
-    const [selected, setSelected] = useState(10);
+    const [selected, setSelected] = useState(0);
 
-    const { feedbackEdit } = useContext(FeedbackContext);
+    const { feedbackEdit, reset, setReset } = useContext(FeedbackContext);
+
     useEffect(() => {
         if (feedbackEdit.edit === true) {
             setSelected(feedbackEdit.item.rating);
         }
     }, [feedbackEdit]);
+
+    useEffect(() => {
+        if (reset) {
+            setSelected(0);
+            setReset(false);
+        }
+    }, [reset]);
 
     const handleChange = (e) => {
         // +string is a unary operator to convert a string to a number
