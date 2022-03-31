@@ -5,7 +5,7 @@ import RatingSelect from "./RatingSelect";
 import FeedbackContext from "../context/FeedbackContext";
 
 function FeedbackForm() {
-    const { addFeedback, feedbackEdit, updateFeedback } =
+    const { addFeedback, feedbackEdit, updateFeedback, reset, setReset } =
         useContext(FeedbackContext);
 
     const [text, setText] = useState("");
@@ -20,6 +20,13 @@ function FeedbackForm() {
             setRating(feedbackEdit.item.rating);
         }
     }, [feedbackEdit]);
+
+    useEffect(() => {
+        if (reset) {
+            setText("");
+            setBtnDisabled(true);
+        }
+    }, [reset]);
 
     const handleTextChange = (e) => {
         const trimmedText = text.trim();
@@ -50,16 +57,17 @@ function FeedbackForm() {
             } else {
                 addFeedback(newFeedback);
             }
-
-            setText("");
-            setBtnDisabled(true);
+            setReset(true);
         }
     };
     return (
         <Card>
             <form onSubmit={handleSubmit}>
                 <h2>How would you rate your service with us?</h2>
-                <RatingSelect select={(rating) => setRating(rating)} />
+                <RatingSelect
+                    reset={reset}
+                    select={(rating) => setRating(rating)}
+                />
                 <div className="input-group">
                     <input
                         type="text"
